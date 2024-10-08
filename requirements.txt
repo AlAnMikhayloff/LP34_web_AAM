@@ -3,7 +3,7 @@ click==8.1.7
 flake8==7.1.1
 Flask==3.0.3
 Flask-SQLAlchemy==2.5.1
-Flask-WTF
+Flask-WTF==1.2.1
 greenlet==3.1.1
 itsdangerous==2.2.0
 Jinja2==3.1.4
@@ -12,6 +12,7 @@ mccabe==0.7.0
 psycopg2-binary==2.9.9
 pycodestyle==2.12.1
 pyflakes==3.2.0
+requests==2.32.3
 SQLAlchemy==1.4.49
 typing_extensions==4.12.2
 Werkzeug==3.0.4
