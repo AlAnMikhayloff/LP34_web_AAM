@@ -1,8 +1,7 @@
 from flask import Flask, render_template
 
-from webapp.model import db
+from webapp.model import db, News
 from webapp.forms import LoginForm
-from webapp.python_org_news import get_python_news
 from webapp.weather import weather_by_city 
 
 
@@ -15,7 +14,7 @@ def create_app():
     def index():
         title = 'Классификатор'
         weather = weather_by_city(app.config['WEATHER_DEFAULT_CITY'])
-        news_list = get_python_news('html')
+        news_list = News.query.order_by(News.published.desc()).all()
         return render_template('index.html', page_title=title, weather=weather, news_list=news_list)
 
     @app.route('/login')
