@@ -11,15 +11,21 @@
     <h1>Новостной сайт</h1>
     <div class="row">
         <div class="col-8">
-            <h2>Новости</h2>
+            <form action="", method="post">
+                {{ from.hodden_tag() }}
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username() }}
+                </p>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password() }}
+                </p>
+                <p>{{ from.submit() }}</p>
+            </form>
         </div>
         <div class="col-4">
-            <h2>Прогноз погоды</h2>
-            {% if weather %}
-            {{ weather.temp_C }}, ощущается как {{weather.FeelsLiceC }}'
-            {% else %}
-                Сервер погоды временно не доступен
-            {% endif %}
+           
         </div>
         </div>
     </div>
