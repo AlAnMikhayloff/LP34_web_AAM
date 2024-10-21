@@ -8,26 +8,35 @@
   </head>
   <body>
     <div class="container">
-    <h1>Новостной сайт</h1>
+    <h2>Авторизация</h2>
     <div class="row">
-        <div class="col-8">
-            <form action="", method="post">
-                {{ from.hodden_tag() }}
-                <p>
-                    {{ form.username.label }}<br>
-                    {{ form.username() }}
-                </p>
-                <p>
-                    {{ form.password.label }}<br>
-                    {{ form.password() }}
-                </p>
-                <p>{{ from.submit() }}</p>
-            </form>
+      <div class="col-4">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+              {{ message }}<br>
+            {% endfor %}
+          </div>
+          {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('process_login') }}", method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label }}<br>
+                {{ form.username() }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}<br>
+                {{ form.password() }}
+            </div>
+            {{ form.submit() }}
+        </form>
         </div>
-        <div class="col-4">
+        <div class="col-8">
            
         </div>
-        </div>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
