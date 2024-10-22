@@ -1,5 +1,5 @@
 from flask import Flask, render_template, flash, redirect, url_for
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 
 from webapp.model import db, News, User
 from webapp.forms import LoginForm
@@ -28,6 +28,8 @@ def create_app():
 
     @app.route('/login')
     def login():
+        if current_user.is_authenticated:
+            return redirect(url_for('index'))
         title = 'Авторизация'
         login_form = LoginForm()
         return render_template('login.html', page_title=title, form=login_form)
@@ -43,5 +45,16 @@ def create_app():
                 return redirect(url_for('index'))
         flash('Неправильное имя пользователя или пароль')
         return redirect(url_for('login'))
+    
+    @app.route('/logout')
+    def logout():
+        logout_user()
+        flash('До свидания!')
+        return redirect(url_for('index'))
+    
+    @app.route('/admin')
+    @login_required
+    def admin_index():
+        return 'Привет, admin!'
     
     return app
