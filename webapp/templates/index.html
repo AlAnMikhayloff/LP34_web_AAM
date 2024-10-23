@@ -29,8 +29,9 @@
         </div>
         <div class="col-4">
           <h2>Прогноз погоды</h2>
+          <h3>в городе Тула</h3>
           {% if weather %}
-          {{ weather.temp_C }}, ощущается как {{weather.FeelsLiceC }}'
+          Температура сейчас: {{ weather.temp_C }} °C, ощущается как: {{ weather.FeelsLikeC }} °C
           {% else %}
             Сервер погоды временно не доступен
           {% endif %}
