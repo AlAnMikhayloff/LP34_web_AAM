@@ -16,7 +16,6 @@ def create_app():
     login_manager = LoginManager()
     login_manager.init_app(app)
     login_manager.login_view = 'user.login'
-    
     app.register_blueprint(admin_blueprint)
     app.register_blueprint(news_blueprint)
     app.register_blueprint(user_blueprint)
@@ -25,5 +24,4 @@ def create_app():
     def load_user(user_id):
         return User.query.get(user_id)
 
-    
     return app

@@ -6,13 +6,17 @@ from webapp.user.models import User
 
 blueprint = Blueprint('user', __name__, url_prefix='/users')
 
+
 @blueprint.route('/login')
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('news.index'))
     title = 'Авторизация'
     login_form = LoginForm()
-    return render_template('login.html', page_title=title, form=login_form)
+    return render_template('user/login.html', page_title=title,
+                           form=login_form
+                           )
+
 
 @blueprint.route('/process-login', methods=['POST'])
 def process_login():
@@ -25,6 +29,8 @@ def process_login():
             return redirect(url_for('news.index'))
     flash('Неправильное имя пользователя или пароль')
     return redirect(url_for('user.login'))
+
+
 @blueprint.route('/logout')
 def logout():
     logout_user()
