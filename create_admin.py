@@ -16,7 +16,7 @@ with app.app_context():
 
     password = getpass('Введите пароль: ')
     password2 = getpass('Повторите пароль: ')
-    
+
     if not password == password2:
         sys.exit(0)
 

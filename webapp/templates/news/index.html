@@ -12,16 +12,16 @@
         </div>
         {% endif %}
       {% endwith %}
-      <h3>Новости Python</h3>
+      <h4>Новости Python</h4>
       {% for news in news_list %}
-      <h4><a href="{{ news.url }}">{{ news.title }}</a></h4>
+      <h6><a href="{{ news.url }}">{{ news.title }}</a></h6>
       <p>{{ news.published.strftime('%d.%m.%Y') }}</p>
       <hr />
       {% endfor %}
     </div>
     <div class="col-4">
-      <h3>Прогноз погоды</h3>
-      <h3>в городе Тула</h3>
+      <h4>Прогноз погоды</h4>
+      <h4>в городе Тула</h4>
       {% if weather %}
       Температура сейчас: {{ weather.temp_C }} °C, ощущается как: {{ weather.FeelsLikeC }} °C
       {% else %}
