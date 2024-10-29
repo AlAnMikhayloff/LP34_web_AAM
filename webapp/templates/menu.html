@@ -1,11 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Новости Python</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
+  <a class="navbar-brand" href="#">Классификация</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-0">
       <li class="nav-item active">
         <a class="nav-link" href="/">Главная страница</a>
       </li>
@@ -17,16 +16,21 @@
           Расчёты
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Метод Бейса</a>
+          <a class="dropdown-item" href="#">Метод Бaйeса</a>
           <a class="dropdown-item" href="#">Обучение модели</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Тестирование модели</a>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
     </ul>
-    <form class="form-inline my-2 my-sm-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Что искать?" aria-label="Search">
-      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Поиск</button>
+    <form class="form-inline mx-auto mr-lg-5">
+      <input class="form-control mx-lg-0" type="search" placeholder="Что искать?" aria-label="Search">
+    </form>
+    <form class="form-inline mx-0 mr-lg-0">
+      <button class="btn btn-outline-warning mx-5 my-sm-0" type="submit">   Поиск  </button>
     </form>
     <ul class="navbar-nav">
       {% if current_user.is_authenticated %}

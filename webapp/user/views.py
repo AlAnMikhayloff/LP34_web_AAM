@@ -15,7 +15,7 @@ def login():
     title = 'Авторизация'
     login_form = LoginForm()
     return render_template('user/login.html', page_title=title,
-                           form=login_form
+                           form=login_form,
                            )
 
 
@@ -46,7 +46,7 @@ def register():
     title = 'Регистрация'
     form = RegistrationForm()
     return render_template('user/registration.html', page_title=title,
-                           form=form
+                           form=form,
                            )
 
 
