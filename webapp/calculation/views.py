@@ -1,21 +1,22 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, flash, redirect, render_template
 from webapp.db import db
-from webapp.calculations.models import UserDataSet
+from webapp.calculation.models import UserDataSet
 
-blueprint = Blueprint('calculations', __name__)
+blueprint = Blueprint('calculations', __name__, url_prefix='/calculation')
 
 
 @blueprint.route('/')
 def index():
     title = 'Расчёт модели'
     calculations_list = UserDataSet.query.order_by(UserDataSet.published.desc()).all()
-    return render_template('calculations/index.html', page_title=title, weather=weather, calculations_list=calculations_list)
+    return render_template('calculations/index.html', page_title=title, calculations_list=calculations_list)
+
 
 @blueprint.route('/process-dataset', methods=['POST'])
 def process_dataset():
     form = RegistrationForm()
     if form.validate_on_submit():
-        new_user = User(username=form.username.data,
+        new_data = Feature(user_feature=form.Name_of_the_feature.data,
                         email=form.email.data, role='user')
         new_user.set_password(form.password.data)
         db.session.add(new_user)
