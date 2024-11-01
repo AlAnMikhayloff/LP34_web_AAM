@@ -3,11 +3,11 @@ from webapp.db import db
 
 class UserDataSet(db.Model):
     id_name = db.Column(db.Integer, primary_key=True)
-    Name_of_the_feature = db.Column(db.String(50), index=True, unique=True)
-    Frequency_of_manifestation_of_the_feature_of_candidate_1 = db.Column(db.String(10))
-    Frequency_of_manifestation_of_the_feature_of_candidate_2 = db.Column(db.String(10))
-    Probability_of_manifestation_of_the_feature_in_candidate_1 = db.Column(db.String(5))
-    Probability_of_manifestation_of_the_feature_in_candidate_2 = db.Column(db.String(5))
+    name_of_the_feature = db.Column(db.String(50), index=True, unique=True)
+    frequency_1 = db.Column(db.String(10))
+    frequency_2 = db.Column(db.String(10))
+    probability_1 = db.Column(db.String(5))
+    probability_2 = db.Column(db.String(5))
 
     def __repr__(self):
-        return '<News {} {}>'.format(self.title, self.url)
+        return '<UserDataSet {} {} {}>'.format(self.name_of_the_feature, self.probability_1, self.probability_2)

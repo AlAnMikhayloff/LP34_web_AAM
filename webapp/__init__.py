@@ -6,7 +6,7 @@ from webapp.db import db
 from webapp.admin.views import blueprint as admin_blueprint
 from webapp.user.views import blueprint as user_blueprint
 from webapp.news.views import blueprint as news_blueprint
-from webapp.сalculation.views import blueprint as calculation_blueprint
+from webapp.calculation.views import blueprint as calculation_blueprint
 from webapp.user.models import User
 
 

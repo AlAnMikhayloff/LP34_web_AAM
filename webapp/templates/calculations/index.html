@@ -1,184 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Частота КП1</th>
-      <th scope="col">Частота КП2</th>
-      <th scope="col">Вероятность КП1</th>
-      <th scope="col">Вероятность КП2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-danger" role="alert">
+          {{ message }} 
+      </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <div class="row">
+    <div class="col-4">
+      <form action="{{ url_for('calculation.process_dataset') }}", method="post">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{ form.name_of_the_feature.label }}<br>
+          {{ form.name_of_the_feature() }}
         </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
+        <div class="form-group">
+          {{ form.frequency_1.label }}<br>
+          {{ form.frequency_1() }}
           </div>
+        <div class="form-group">
+          {{ form.frequency_2.label }}<br>
+          {{ form.frequency_2() }}
         </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
+        <div class="form-group">
+          {{ form.probability_1.label }}<br>
+          {{ form.probability_1() }}
         </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
+        <div class="form-group">
+          {{ form.probability_2.label }}<br>
+          {{ form.probability_2() }}
         </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="input-group">
-          <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Button</button>
-          </div>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        {{ form.submit() }}
+      </form>
+      <div class="col-8">  
+      </div>            
+    </div>
+  </div>
 {% endblock %}
