@@ -4,15 +4,14 @@ from webapp.calculation.forms import DataSetForm
 from webapp.calculation.models import UserDataSet
 from webapp.db import db
 
-blueprint = Blueprint('calculations', __name__, url_prefix='/calculation')
+blueprint = Blueprint('calculation', __name__, url_prefix='/calculations')
 
-'''
+
 @blueprint.route('/')
 def index():
     title = 'Расчёт модели'
-    calculations_list = UserDataSet.query.order_by(UserDataSet.published.desc()).all()
-    return render_template('calculation/index.html', page_title=title, calculations_list=calculations_list)
-'''
+    return render_template('calculations/index.html', page_title=title, form=DataSetForm)
+
 
 @blueprint.route('/process-dataset', methods=['POST'])
 def process_dataset():
@@ -23,10 +22,9 @@ def process_dataset():
         db.session.add(new_data)
         db.session.commit()
         flash('Можете вводить следующие данные.')
-        return redirect(url_for('calculation.inputdata'))
+        return redirect(url_for('calculation.index'))
     else:
         for field, errors in form.errors.items():
             for error in errors:
-                flash('Ошибка в поле {}: {}'.format(
-                    getattr(form, field).label.text, error))
-        return redirect(url_for('calculation.inputdata'))
+                flash('Ошибка в поле {}: {}'.format(getattr(form, field).label.text, error))
+        return redirect(url_for('calculation.index'))
