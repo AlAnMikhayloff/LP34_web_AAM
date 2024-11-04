@@ -12,8 +12,7 @@
   {% endwith %}
   <div class="row">
     <div class="col-4">
-      <form action="{{ url_for('calculation.process_dataset') }}", method="post">
-
+      <form action="{{ url_for('calculation.index') }}", method="post">
         <div class="form-group">
           {{ form.name_of_the_feature.label }}<br>
           {{ form.name_of_the_feature() }}

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, redirect, url_for
+from flask import Blueprint, flash, redirect, render_template, url_for
 
 from webapp.calculation.forms import DataSetForm
 from webapp.calculation.models import UserDataSet
@@ -10,7 +10,7 @@ blueprint = Blueprint('calculation', __name__, url_prefix='/calculations')
 @blueprint.route('/')
 def index():
     title = 'Расчёт модели'
-    return render_template('calculations/index.html', page_title=title, form=DataSetForm)
+    return render_template('calculation/index.html', page_title=title, form=DataSetForm())
 
 
 @blueprint.route('/process-dataset', methods=['POST'])

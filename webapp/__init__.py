@@ -2,8 +2,8 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
-from webapp.db import db
 from webapp.admin.views import blueprint as admin_blueprint
+from webapp.db import db
 from webapp.user.views import blueprint as user_blueprint
 from webapp.news.views import blueprint as news_blueprint
 from webapp.calculation.views import blueprint as calculation_blueprint

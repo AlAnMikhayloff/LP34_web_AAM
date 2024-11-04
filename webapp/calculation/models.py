@@ -2,7 +2,7 @@ from webapp.db import db
 
 
 class UserDataSet(db.Model):
-    id_name = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name_of_the_feature = db.Column(db.String(50), index=True, unique=True)
     frequency_1 = db.Column(db.String(10))
     frequency_2 = db.Column(db.String(10))
