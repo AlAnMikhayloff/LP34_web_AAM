@@ -1,5 +1,7 @@
 from flask import Blueprint, flash, redirect, render_template, url_for
 
+from flask_login import current_user
+
 from webapp.calculation.forms import DataSetForm
 from webapp.calculation.models import UserDataSet
 from webapp.db import db
@@ -10,7 +12,8 @@ blueprint = Blueprint('calculation', __name__, url_prefix='/calculations')
 @blueprint.route('/')
 def index():
     title = 'Расчёт модели'
-    return render_template('calculation/index.html', page_title=title, form=DataSetForm())
+    form = DataSetForm()
+    return render_template('calculation/index.html', page_title=title, form=form)
 
 
 @blueprint.route('/process-dataset', methods=['POST'])
@@ -18,7 +21,7 @@ def process_dataset():
     form = DataSetForm()
     if form.validate_on_submit():
         new_data = UserDataSet(name_of_the_feature=form.name_of_the_feature.data, frequency_1=form.frequency_1.data,
-                               frequency_2=form.frequency_2.data)
+                               frequency_2=form.frequency_2.data, user_id=current_user.id)
         db.session.add(new_data)
         db.session.commit()
         flash('Можете вводить следующие данные.')
