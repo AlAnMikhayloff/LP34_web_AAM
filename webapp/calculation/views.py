@@ -20,12 +20,14 @@ def index():
 def process_dataset():
     form = DataSetForm()
     if form.validate_on_submit():
-        new_data = UserDataSet(name_of_the_feature=form.name_of_the_feature.data, frequency_1=form.frequency_1.data,
-                               frequency_2=form.frequency_2.data, user_id=current_user.id)
+        new_data = UserDataSet(name_of_the_feature=form.name_of_the_feature.data, n_samples=form.n_samples.data,
+                               n_features=form.n_features.data, applicant=form.applicant.data, user_id=current_user.id)
         db.session.add(new_data)
         db.session.commit()
         flash('Можете вводить следующие данные.')
         return redirect(url_for('calculation.index'))
+    elif form.validate_on_submit1():
+        flash('Данные сохранены, сейчас будет результат. Благодарим за ожидание.')
     else:
         for field, errors in form.errors.items():
             for error in errors:

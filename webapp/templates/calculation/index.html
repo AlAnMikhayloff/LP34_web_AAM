@@ -19,22 +19,18 @@
           {{ form.name_of_the_feature() }}
         </div>
         <div class="form-group">
-          {{ form.frequency_1.label }}<br>
-          {{ form.frequency_1() }}
+          {{ form.n_samples.label }}<br>
+          {{ form.n_samples() }}
           </div>
         <div class="form-group">
-          {{ form.frequency_2.label }}<br>
-          {{ form.frequency_2() }}
+          {{ form.n_features.label }}<br>
+          {{ form.n_features() }}
         </div>
         <div class="form-group">
-          {{ form.probability_1.label }}<br>
-          {{ form.probability_1() }}
+          {{ form.applicant.label }}<br>
+          {{ form.applicant() }}
         </div>
-        <div class="form-group">
-          {{ form.probability_2.label }}<br>
-          {{ form.probability_2() }}
-        </div>
-        {{ form.submit() }}
+        {{ form.submit() }}    {{ form.submit1() }}
       </form>
       <div class="col-8">  
       </div>            
