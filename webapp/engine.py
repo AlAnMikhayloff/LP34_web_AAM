@@ -5,7 +5,7 @@ from sklearn.naive_bayes import GaussianNB
 # from webapp.db import db
 # from webapp.calculation.models import UserDataSet
 
-df = pd.read_csv("webapp/calculation/user_1.csv")
+df = pd.read_csv("output.csv")
 
 # print(df.to_numpy())
 # print(df.iloc[:, 7].to_list())

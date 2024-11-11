@@ -10,30 +10,50 @@
       {% endfor %}
     {% endif %}
   {% endwith %}
-  <div class="row">
-    <div class="col-4">
-      <form action="{{ url_for('calculation.process_dataset') }}", method="post">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-          {{ form.name_of_the_feature.label }}<br>
-          {{ form.name_of_the_feature() }}
-        </div>
-        <div class="form-group">
-          {{ form.n_samples.label }}<br>
-          {{ form.n_samples() }}
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <form action="{{ url_for('calculation.process_dataset') }}", method="post">
+          {{ form.hidden_tag() }}
+          <div class="form-group">
+            {{ form.name_of_the_feature.label }}<br>
+            {{ form.name_of_the_feature() }}
           </div>
-        <div class="form-group">
-          {{ form.n_features.label }}<br>
-          {{ form.n_features() }}
+          <div class="form-group">
+            {{ form.n_samples.label }}<br>
+            {{ form.n_samples() }}
+            </div>
+          <div class="form-group">
+            {{ form.n_features.label }}<br>
+            {{ form.n_features() }}
+          </div>
+          <div class="form-group">
+            {{ form.applicant.label }}<br>
+            {{ form.applicant() }}
+          </div>
+          {{ form.submit() }}
+        </form>
+      </div>  
+      <div class="col-4">
+        <div class="card" style="width: 18rem;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Thomas_Bayes.gif" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Наивный Байес</h5>
+            <p class="card-text">Если Вы завершили ввод данных, нажмите на кнопку ниже:</p>
+            <a href="{{ url_for('calculation.process_export_csv') }}", method="get", class="btn btn-danger">Сохранить DataSet</a>
+          </div>
         </div>
-        <div class="form-group">
-          {{ form.applicant.label }}<br>
-          {{ form.applicant() }}
+      </div>
+      <div class="col-4">
+        <div class="card" style="width: 18rem;">
+          <img src="https://scikit-learn.org/stable/_images/sphx_glr_plot_svm_margin_002.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Определите у какого претендента передпочтение.</h5>
+            <p class="card-text">Начните расчёт:</p>
+            <a href="{{ url_for('calculation.engine') }}", method="get", class="btn btn-success">Расчитать</a>
+          </div>
         </div>
-        {{ form.submit() }}    {{ form.submit1() }}
-      </form>
-      <div class="col-8">  
-      </div>            
+      </div>
     </div>
   </div>
 {% endblock %}

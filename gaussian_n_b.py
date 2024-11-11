@@ -81,7 +81,3 @@ print(sk_nb_clf_pred_res)
 feature_indexes = [2, 3]
 title1 = 'GaussianNB surface'
 dbp = decision_boundary_plot(X1, y1, X1_train, y1_train, sk_nb_clf, feature_indexes, title1)
-
-
-data_1 = pd.read_csv('webapp/calculation/user_1.csv')
-print(data_1)
