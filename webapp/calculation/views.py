@@ -49,12 +49,13 @@ def process_export_csv():
     cursor = conn.cursor()
 
     # Выполнить SQL-запрос
-    query = "SELECT * FROM user_data_set"
+    query = "SELECT * FROM user_data_set WHERE user_id=?"
     cursor.execute(query)
     data = cursor.fetchall()
 
     # Записать данные в CSV-файл
-    with open('output.csv', 'w', newline='') as file:
+    with open(f'output{current_user.id}.csv', 'w', newline='') as file:
+        
         writer = csv.writer(file)
         writer.writerow([i[0] for i in cursor.description])  # Write header
         writer.writerows(data)  # Write data rows
@@ -68,7 +69,7 @@ def process_export_csv():
 
 @blueprint.route('/engine', methods=['GET'])
 def engine():
-    df = pd.read_csv("output.csv")
+    df = pd.read_csv(f"output{current_user.id}.csv")
 
     result = list([i, j] for i, j in zip(df.iloc[:, 2].to_list(), df.iloc[:, 3].to_list()))
     result1 = list(df.iloc[:, 4].to_list())
