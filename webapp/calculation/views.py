@@ -44,18 +44,20 @@ def process_dataset():
 
 @blueprint.route('/process-export-csv', methods=['GET'])
 def process_export_csv():
+    
     # Подключение к базе данных SQLite
+
     conn = sqlite3.connect('webapp.db')
     cursor = conn.cursor()
 
     # Выполнить SQL-запрос
-    query = "SELECT * FROM user_data_set WHERE user_id=?"
-    cursor.execute(query)
+
+    cursor.execute('SELECT * FROM user_data_set WHERE user_id=?', (current_user.id,))
     data = cursor.fetchall()
 
     # Записать данные в CSV-файл
+
     with open(f'output{current_user.id}.csv', 'w', newline='') as file:
-        
         writer = csv.writer(file)
         writer.writerow([i[0] for i in cursor.description])  # Write header
         writer.writerows(data)  # Write data rows
