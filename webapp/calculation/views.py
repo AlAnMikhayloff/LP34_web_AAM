@@ -44,7 +44,7 @@ def process_dataset():
 
 @blueprint.route('/process-export-csv', methods=['GET'])
 def process_export_csv():
-    
+
     # Подключение к базе данных SQLite
 
     conn = sqlite3.connect('webapp.db')
