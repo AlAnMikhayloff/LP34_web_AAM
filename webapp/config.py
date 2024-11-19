@@ -4,8 +4,8 @@ from datetime import timedelta
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 WEATHER_DEFAULT_CITY = "Tula,Russia"
-WEATHER_API_KEY = "5ae665c25830452face211650240810"
-WEATHER_URL = "http://api.worldweatheronline.com/premium/v1/weather.ashx"
+WEATHER_API_KEY = "6af8009901fa457cee756d7b0a5a09c8"
+WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, '..',
                                                       'webapp.db',
                                                       )

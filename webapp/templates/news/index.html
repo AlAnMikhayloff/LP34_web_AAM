@@ -20,10 +20,17 @@
       {% endfor %}
     </div>
     <div class="col-4">
-      <h4>Прогноз погоды</h4>
+      <h4>Текущая погода</h4>
       <h4>в городе Тула</h4>
       {% if weather %}
-      Температура сейчас: {{ weather.temp_C }} °C, ощущается как: {{ weather.FeelsLikeC }} °C
+      Температура сейчас: {{ weather.main.temp }} °C,
+      <p>ощущается как: {{ weather.main.feels_like }} °C</p>
+      <p>Скорость ветра: {{ weather.wind.speed }} м/с</p>
+      <p>Порывы ветра до: {{ weather.wind.gust }} м/с</p>
+      <p> {% for weathers in weather.weather %}
+        <li>{{ weathers.description }}</li>
+          {% endfor %}
+      </p>
       {% else %}
         Сервер погоды временно не доступен
       {% endif %}

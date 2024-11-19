@@ -82,12 +82,12 @@ def engine():
     clf = GaussianNB()
     clf.fit(X, Y)
     flash('Сейчас будет результат:')
-    # return clf.predict([[10, 7]])
+
     clf_pf = GaussianNB()
     clf_pf.partial_fit(X, Y, np.unique(Y))
-    # return redirect(url_for('calculation.index'))
+
     answer = int(clf_pf.predict([[10, 5]]))
-    # flash('Преимущество у претендента №', {answer})
+
     flash(f'С большой долей вероятнсти можно отдать предпочтение претенденту № {answer}')
     return render_template('calculation/engine.html', answer=answer)
 
